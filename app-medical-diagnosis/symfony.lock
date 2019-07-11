@@ -1,21 +1,4 @@
 {
-    "api-platform/api-pack": {
-        "version": "v1.2.0"
-    },
-    "api-platform/core": {
-        "version": "2.1",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.1",
-            "ref": "18727d8f229306860b46955f438e1897421da689"
-        },
-        "files": [
-            "config/packages/api_platform.yaml",
-            "config/routes/api_platform.yaml",
-            "src/Entity/.gitignore"
-        ]
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -119,18 +102,6 @@
     "monolog/monolog": {
         "version": "1.24.0"
     },
-    "nelmio/cors-bundle": {
-        "version": "1.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.5",
-            "ref": "f0436fc35fca88eada758311f8de43bfb61f1980"
-        },
-        "files": [
-            "config/packages/nelmio_cors.yaml"
-        ]
-    },
     "nikic/php-parser": {
         "version": "v4.2.2"
     },
@@ -171,6 +142,18 @@
         },
         "files": [
             "config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "0dc9cceda799fd3a08b96987e176a261028a3709"
+        },
+        "files": [
+            "phpcs.xml.dist"
         ]
     },
     "swiftmailer/swiftmailer": {
@@ -554,9 +537,6 @@
     },
     "webmozart/assert": {
         "version": "1.4.0"
-    },
-    "willdurand/negotiation": {
-        "version": "v2.3.1"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"
