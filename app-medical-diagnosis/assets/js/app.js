@@ -17,5 +17,6 @@ global.$ = global.jQuery = $;
 
 // Need Bootstrap? Install it with "yarn add bootstrap"
 import 'bootstrap'; //Adds functions to jQuery
+import 'font-awesome/css/font-awesome.css';
 //global.$ = $;
 
