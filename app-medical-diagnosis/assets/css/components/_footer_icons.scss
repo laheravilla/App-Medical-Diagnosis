@@ -1,0 +1,13 @@
+.cont-footer-icons {
+  background-color: lighten($footer-color, 10);
+  min-width: 100px;
+  .cont-icon > a {
+    text-decoration: none;
+    p {
+      font-size: 0.9rem;
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
