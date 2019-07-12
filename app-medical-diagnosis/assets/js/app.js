@@ -5,8 +5,17 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-// any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.css');
+// any CSS you require will output into a single css file (app.scss in this case)
+import '../css/app.scss';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
+import $ from 'jquery';
+// import './main.js';
+//create global $ and jQuery variables
+global.$ = global.jQuery = $;
+
+// Need Bootstrap? Install it with "yarn add bootstrap"
+import 'bootstrap'; //Adds functions to jQuery
+//global.$ = $;
+

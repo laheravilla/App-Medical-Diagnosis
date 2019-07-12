@@ -1,0 +1,18 @@
+@import "~bootstrap";
+@import "~font-awesome";
+
+
+.section-footer-rgpd {
+    background-color: lighten(gray, 35);
+    .cont-icon-warning {
+        img {
+            width: 25px;
+            margin: 40% auto auto 80%;
+        }
+    }
+    .cont-text-rgpd {
+        .text-rgpd {
+            font-size: 0.9rem;
+        }
+    }
+}

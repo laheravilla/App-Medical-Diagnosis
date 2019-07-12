@@ -8,7 +8,9 @@
         {% endblock %}
     </head>
     <body>
+    <main class="container-fluid">
         {% block body %}{% endblock %}
+    </main>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
