@@ -1,0 +1,7 @@
+{{ include('_question.html.twig', { question: 'Veuillez entrer votre tranche d\'âge' }) }}
+<div class="user-icon d-flex justify-content-center pb-3">
+    <img src="{{ asset('build/images/user-icon.f70decb0.png') }}" alt="">
+</div>
+<div class="input-age-range">
+    {{ form_row(form.ageRange, {'attr': {'class':'d-flex flex-row justify-content-center'}}) }}
+</div>
