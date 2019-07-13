@@ -24,15 +24,22 @@ class UserType extends AbstractType
                 'label' => false,
                 'expanded' => true,
                 'choices' => [
-                    '15 à 17 ans' => true,
-                    '18 à 24 ans' => true,
-                    '25 à 34 ans' => true,
-                    '35 à 49 ans' => true,
-                    '50 à 64 ans' => true,
-                    '+65 ans' => true,
+                    '15 à 17 ans' => '15-17',
+                    '18 à 24 ans' => '18-24',
+                    '25 à 34 ans' => '25-34',
+                    '35 à 49 ans' => '35-49',
+                    '50 à 64 ans' => '50-64',
+                    '+65 ans' => '+65',
                 ]
             ])
-//            ->add('gender')
+            ->add('gender', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'choices' => [
+                    'Je suis une femme' => 'female',
+                    'Je suis un homme' => 'male',
+                ]
+            ])
 //            ->add('socialStatus')
 //            ->add('numberOfChildren')
 //            ->add('habits')
