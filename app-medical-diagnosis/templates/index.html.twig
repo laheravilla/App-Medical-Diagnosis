@@ -14,7 +14,8 @@
             </div>
             {{ form_start(form, {'attr': {'novalidate':'novalidate', 'class':'col-10 user-form m-auto'}}) }}
 {#            {{ include('firstname_lastname_fields.html.twig') }}#}
-            {{ include('age_range.html.twig') }}
+{#            {{ include('age_range.html.twig') }}#}
+            {{ include('gender.html.twig') }}
             <button type="submit">Submit</button>
             {{ form_row(form._token) }}
             {{ form_end(form, {'render_rest': false}) }}
