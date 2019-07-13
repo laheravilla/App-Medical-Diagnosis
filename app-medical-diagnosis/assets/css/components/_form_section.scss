@@ -1,0 +1,15 @@
+section.form {
+  height: 80vh;
+  .user-icon {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .cont-prev {
+    left: 0;
+  }
+  .cont-next {
+  right: 0;
+}
+}

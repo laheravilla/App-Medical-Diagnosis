@@ -1,0 +1,10 @@
+{{ include('_question.html.twig', { question: 'Veuillez entrer prénom et nom' }) }}
+<div class="user-icon d-flex justify-content-center pb-3">
+    <img src="{{ asset('build/images/user-icon.f70decb0.png') }}" alt="">
+</div>
+<div class="input-first-lastname">
+    {{ form_row(form.firstName, {'attr': {'class':''}}) }}
+    {{ form_row(form.lastName, {'attr': {'class':''}}) }}
+</div>
+
+
