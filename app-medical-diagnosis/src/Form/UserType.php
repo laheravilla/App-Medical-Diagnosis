@@ -13,20 +13,24 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('ageRange')
-            ->add('gender')
-            ->add('socialStatus')
-            ->add('numberOfChildren')
-            ->add('habits')
-            ->add('favoriteBreakfast')
-            ->add('favoriteDrink')
-            ->add('weight')
-            ->add('height')
-            ->add('familyClinicalHistory')
-            ->add('userClinicalHistory')
-            ->add('email')
+            ->add('firstName', TextType::class, [
+                'label' => false
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => false
+            ])
+//            ->add('ageRange')
+//            ->add('gender')
+//            ->add('socialStatus')
+//            ->add('numberOfChildren')
+//            ->add('habits')
+//            ->add('favoriteBreakfast')
+//            ->add('favoriteDrink')
+//            ->add('weight')
+//            ->add('height')
+//            ->add('familyClinicalHistory')
+//            ->add('userClinicalHistory')
+//            ->add('email')
         ;
     }
 

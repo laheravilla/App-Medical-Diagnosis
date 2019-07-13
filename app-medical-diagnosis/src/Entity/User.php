@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -31,11 +32,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $lastName;
 
@@ -67,12 +70,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="float")
      */
-    private $weight = 0.0;
+    private $weight = 0;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $height = 0.0;
+    private $height = 0;
 
     /**
      * @ORM\Column(type="integer")
