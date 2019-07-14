@@ -6,16 +6,12 @@
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {#    {{ include('starting_button.html.twig') }}#}
         <section class="form d-flex justify-content-center align-items-center w-100 position-relative">
-            <div class="cont-prev position-absolute">
-                <button class="btn btn-outline-primary" type="button" value="prev"><i class="fas fa-chevron-left"></i> Précédent</button>
-            </div>
-            <div class="cont-next position-absolute">
-                <button class="btn btn-outline-primary" type="button" value="next">Suivant <i class="fas fa-chevron-right"></i></button>
-            </div>
+            {{ include('_previous_next_button.html.twig') }}
             {{ form_start(form, {'attr': {'novalidate':'novalidate', 'class':'col-10 user-form m-auto'}}) }}
 {#            {{ include('firstname_lastname_fields.html.twig') }}#}
 {#            {{ include('age_range.html.twig') }}#}
-            {{ include('gender.html.twig') }}
+{#            {{ include('gender.html.twig') }}#}
+            {{ include('social_status.html.twig') }}
             <button type="submit">Submit</button>
             {{ form_row(form._token) }}
             {{ form_end(form, {'render_rest': false}) }}

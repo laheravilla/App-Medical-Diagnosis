@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -49,26 +48,6 @@ class User implements UserInterface
     private $ageRange;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SocialStatus", mappedBy="user", orphanRemoval=true)
-     */
-    private $socialStatus;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\FavoriteBreakfast", mappedBy="user", orphanRemoval=true)
-     */
-    private $favoriteBreakfast;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\FavoriteDrink", mappedBy="user", orphanRemoval=true)
-     */
-    private $favoriteDrink;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\FamilyClinicalHistory", mappedBy="user", orphanRemoval=true)
-     */
-    private $familyClinicalHistory;
-
-    /**
      * @ORM\Column(type="float")
      */
     private $weight = 0;
@@ -89,13 +68,31 @@ class User implements UserInterface
      */
     private $gender;
 
-    public function __construct()
-    {
-        $this->socialStatus = new ArrayCollection();
-        $this->favoriteBreakfast = new ArrayCollection();
-        $this->favoriteDrink = new ArrayCollection();
-        $this->familyClinicalHistory = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
+     */
+    private $socialStatus;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $habits;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $favoriteBreakfast;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $favoriteDrink;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $familyClinicalHistory;
 
     public function getId(): ?int
     {
@@ -204,130 +201,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|SocialStatus[]
-     */
-    public function getSocialStatus(): Collection
-    {
-        return $this->socialStatus;
-    }
-
-    public function addSocialStatus(SocialStatus $socialStatus): self
-    {
-        if (!$this->socialStatus->contains($socialStatus)) {
-            $this->socialStatus[] = $socialStatus;
-            $socialStatus->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSocialStatus(SocialStatus $socialStatus): self
-    {
-        if ($this->socialStatus->contains($socialStatus)) {
-            $this->socialStatus->removeElement($socialStatus);
-            // set the owning side to null (unless already changed)
-            if ($socialStatus->getUser() === $this) {
-                $socialStatus->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|FavoriteBreakfast[]
-     */
-    public function getFavoriteBreakfast(): Collection
-    {
-        return $this->favoriteBreakfast;
-    }
-
-    public function addFavoriteBreakfast(FavoriteBreakfast $favoriteBreakfast): self
-    {
-        if (!$this->favoriteBreakfast->contains($favoriteBreakfast)) {
-            $this->favoriteBreakfast[] = $favoriteBreakfast;
-            $favoriteBreakfast->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoriteBreakfast(FavoriteBreakfast $favoriteBreakfast): self
-    {
-        if ($this->favoriteBreakfast->contains($favoriteBreakfast)) {
-            $this->favoriteBreakfast->removeElement($favoriteBreakfast);
-            // set the owning side to null (unless already changed)
-            if ($favoriteBreakfast->getUser() === $this) {
-                $favoriteBreakfast->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|FavoriteDrink[]
-     */
-    public function getFavoriteDrink(): Collection
-    {
-        return $this->favoriteDrink;
-    }
-
-    public function addFavoriteDrink(FavoriteDrink $favoriteDrink): self
-    {
-        if (!$this->favoriteDrink->contains($favoriteDrink)) {
-            $this->favoriteDrink[] = $favoriteDrink;
-            $favoriteDrink->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavoriteDrink(FavoriteDrink $favoriteDrink): self
-    {
-        if ($this->favoriteDrink->contains($favoriteDrink)) {
-            $this->favoriteDrink->removeElement($favoriteDrink);
-            // set the owning side to null (unless already changed)
-            if ($favoriteDrink->getUser() === $this) {
-                $favoriteDrink->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|FamilyClinicalHistory[]
-     */
-    public function getFamilyClinicalHistory(): Collection
-    {
-        return $this->familyClinicalHistory;
-    }
-
-    public function addFamilyClinicalHistory(FamilyClinicalHistory $familyClinicalHistory): self
-    {
-        if (!$this->familyClinicalHistory->contains($familyClinicalHistory)) {
-            $this->familyClinicalHistory[] = $familyClinicalHistory;
-            $familyClinicalHistory->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFamilyClinicalHistory(FamilyClinicalHistory $familyClinicalHistory): self
-    {
-        if ($this->familyClinicalHistory->contains($familyClinicalHistory)) {
-            $this->familyClinicalHistory->removeElement($familyClinicalHistory);
-            // set the owning side to null (unless already changed)
-            if ($familyClinicalHistory->getUser() === $this) {
-                $familyClinicalHistory->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getWeight(): ?float
     {
         return $this->weight;
@@ -372,6 +245,66 @@ class User implements UserInterface
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getSocialStatus(): ?string
+    {
+        return $this->socialStatus;
+    }
+
+    public function setSocialStatus(string $socialStatus): self
+    {
+        $this->socialStatus = $socialStatus;
+
+        return $this;
+    }
+
+    public function getHabits(): ?string
+    {
+        return $this->habits;
+    }
+
+    public function setHabits(string $habits): self
+    {
+        $this->habits = $habits;
+
+        return $this;
+    }
+
+    public function getFavoriteBreakfast(): ?string
+    {
+        return $this->favoriteBreakfast;
+    }
+
+    public function setFavoriteBreakfast(string $favoriteBreakfast): self
+    {
+        $this->favoriteBreakfast = $favoriteBreakfast;
+
+        return $this;
+    }
+
+    public function getFavoriteDrink(): ?string
+    {
+        return $this->favoriteDrink;
+    }
+
+    public function setFavoriteDrink(string $favoriteDrink): self
+    {
+        $this->favoriteDrink = $favoriteDrink;
+
+        return $this;
+    }
+
+    public function getFamilyClinicalHistory(): ?string
+    {
+        return $this->familyClinicalHistory;
+    }
+
+    public function setFamilyClinicalHistory(string $familyClinicalHistory): self
+    {
+        $this->familyClinicalHistory = $familyClinicalHistory;
 
         return $this;
     }
