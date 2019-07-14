@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\SocialStatus;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,7 +42,16 @@ class UserType extends AbstractType
                     'Je suis un homme' => 'male',
                 ]
             ])
-//            ->add('socialStatus')
+            ->add('socialStatus', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'choices' => [
+                    'Marié(e)' => 'married',
+                    'Divorcé(e) ou séparé(e)' => 'divorced',
+                    'Veuf(ve)' => 'widow',
+                    'Célibataire' => 'single'
+                ],
+            ])
 //            ->add('numberOfChildren')
 //            ->add('habits')
 //            ->add('favoriteBreakfast')

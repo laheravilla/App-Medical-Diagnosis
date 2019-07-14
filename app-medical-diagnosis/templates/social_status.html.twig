@@ -1,0 +1,9 @@
+{{ include('_question.html.twig', { question: 'Veuillez entrer votre status social' }) }}
+<div class="user-icon d-flex justify-content-center pb-3">
+    <img src="{{ asset('build/images/user-icon.f70decb0.png') }}" alt="">
+</div>
+<div class="input-social-status">
+    {{ form_row(form.socialStatus, {'attr': {'class':'d-flex flex-row justify-content-center'}}) }}
+</div>
+
+
