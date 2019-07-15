@@ -49,11 +49,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $weight = 0;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $height = 0;
 
