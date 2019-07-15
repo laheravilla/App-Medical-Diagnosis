@@ -112,14 +112,14 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'choices' => [
-                    'antecedent 1' => 'antecedent 1',
-                    'antecedent 2' => 'antecedent 2',
-                    'antecedent 3' => 'antecedent 3',
-                    'antecedent 4' => 'antecedent 4',
-                    'antecedent 5' => 'antecedent 5',
-                    'antecedent 6' => 'antecedent 6',
-                    'antecedent 7' => 'antecedent 7',
-                    'antecedent 8' => 'antecedent 8',
+                    'Maladie de crohn, maldies inflammatoires du système digestif' => 'digestive system',
+                    'Diabète' => 'diabetes',
+                    'Endométriose' => 'endometriosis',
+                    'Surpoids/Obésité' => 'overweight',
+                    'Polyarthrite Rhumatoïde' => 'rheumatoid arthritis',
+                    'Lupus' => 'lupus',
+                    'Psoriasis/Eczéma' => 'psoriasis',
+                    'Cancers' => 'cancer',
                 ]
             ])
             ->add('userClinicalHistory', ChoiceType::class, [
@@ -127,14 +127,14 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'choices' => [
-                    'antecedent 1' => 'antecedent 1',
-                    'antecedent 2' => 'antecedent 2',
-                    'antecedent 3' => 'antecedent 3',
-                    'antecedent 4' => 'antecedent 4',
-                    'antecedent 5' => 'antecedent 5',
-                    'antecedent 6' => 'antecedent 6',
-                    'antecedent 7' => 'antecedent 7',
-                    'antecedent 8' => 'antecedent 8',
+                    'Maladie de crohn, maldies inflammatoires du système digestif' => 'digestive system',
+                    'Diabète' => 'diabetes',
+                    'Endométriose' => 'endometriosis',
+                    'Surpoids/Obésité' => 'overweight',
+                    'Polyarthrite Rhumatoïde' => 'rheumatoid arthritis',
+                    'Lupus' => 'lupus',
+                    'Psoriasis/Eczéma' => 'psoriasis',
+                    'Cancers' => 'cancer',
                 ]
             ])
 //            ->add('email')
