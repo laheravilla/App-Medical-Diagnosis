@@ -61,7 +61,18 @@ class UserType extends AbstractType
                     '+3 enfants' => '3'
                 ]
             ])
-//            ->add('habits')
+            ->add('habits', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'choices' => [
+                    'Fumer' => 'smoking',
+                    'Boire' => 'drinking',
+                    'Sommeil' => 'sleeping',
+                    'Sport' => 'sport',
+                    'Médicaments' => 'medicaments',
+                    'Exposition aux chimiques' => 'chimical_exposition',
+                ]
+            ])
 //            ->add('favoriteBreakfast')
 //            ->add('favoriteDrink')
 //            ->add('weight')
