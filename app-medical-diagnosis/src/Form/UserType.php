@@ -73,7 +73,16 @@ class UserType extends AbstractType
                     'Exposition aux chimiques' => 'chimical_exposition',
                 ]
             ])
-//            ->add('favoriteBreakfast')
+            ->add('favoriteBreakfast', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'choices' => [
+                    'Croissants, oeufs, tartines, confiture' => 'french breakfast',
+                    'Jus vert' => 'green juice',
+                    'Porridge, muesli' => 'porridge',
+                    'Mélande de fruits' => 'fruits mix',
+                ]
+            ])
 //            ->add('favoriteDrink')
 //            ->add('weight')
 //            ->add('height')

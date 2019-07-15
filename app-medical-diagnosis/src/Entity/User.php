@@ -83,6 +83,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $favoriteBreakfast;
 
@@ -93,6 +94,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $familyClinicalHistory;
 
