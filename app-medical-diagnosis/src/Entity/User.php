@@ -48,13 +48,13 @@ class User implements UserInterface
     private $ageRange;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $weight = 0;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $height = 0;
