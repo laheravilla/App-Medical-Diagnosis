@@ -83,7 +83,15 @@ class UserType extends AbstractType
                     'Mélande de fruits' => 'fruits mix',
                 ]
             ])
-//            ->add('favoriteDrink')
+            ->add('favoriteDrink', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'choices' => [
+                    'Café, thé noir, maté, autre boisson caféinée' => 'caffeinated drink',
+                    'Vin, bière, cocktail, autre boisson alcoolique' => 'alcoholic drinks',
+                    'Rien de spécial' => 'nothing special',
+                ]
+            ])
 //            ->add('weight')
 //            ->add('height')
 //            ->add('familyClinicalHistory')
