@@ -1,0 +1,7 @@
+.input-group-prepend {
+  button.input-group-text {
+    height: calc(1.5em + 0.75rem + 2px);
+    border-radius: 0 10px 10px 0!important;
+    border-left: none;
+  }
+}

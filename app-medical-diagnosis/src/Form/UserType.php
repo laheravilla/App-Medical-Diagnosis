@@ -107,9 +107,39 @@ class UserType extends AbstractType
                     'max' => 250
                 ]
             ])
-//            ->add('familyClinicalHistory')
-//            ->add('userClinicalHistory')
-//            ->add('email')
+            ->add('familyClinicalHistory', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'multiple' => true,
+                'choices' => [
+                    'antecedent 1' => 'antecedent 1',
+                    'antecedent 2' => 'antecedent 2',
+                    'antecedent 3' => 'antecedent 3',
+                    'antecedent 4' => 'antecedent 4',
+                    'antecedent 5' => 'antecedent 5',
+                    'antecedent 6' => 'antecedent 6',
+                    'antecedent 7' => 'antecedent 7',
+                    'antecedent 8' => 'antecedent 8',
+                ]
+            ])
+            ->add('userClinicalHistory', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'multiple' => true,
+                'choices' => [
+                    'antecedent 1' => 'antecedent 1',
+                    'antecedent 2' => 'antecedent 2',
+                    'antecedent 3' => 'antecedent 3',
+                    'antecedent 4' => 'antecedent 4',
+                    'antecedent 5' => 'antecedent 5',
+                    'antecedent 6' => 'antecedent 6',
+                    'antecedent 7' => 'antecedent 7',
+                    'antecedent 8' => 'antecedent 8',
+                ]
+            ])
+            ->add('email', TextType::class, [
+                'label' => false,
+            ])
         ;
     }
 
