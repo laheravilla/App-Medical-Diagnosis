@@ -7,6 +7,7 @@ use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -92,8 +93,20 @@ class UserType extends AbstractType
                     'Rien de spécial' => 'nothing special',
                 ]
             ])
-//            ->add('weight')
-//            ->add('height')
+            ->add('weight', RangeType::class, [
+                'label' => false,
+                'attr' => [
+                    'min' => 0,
+                    'max' => 200
+                ]
+            ])
+            ->add('height', RangeType::class, [
+                'label' => false,
+                'attr' => [
+                    'min' => 0,
+                    'max' => 250
+                ]
+            ])
 //            ->add('familyClinicalHistory')
 //            ->add('userClinicalHistory')
 //            ->add('email')
