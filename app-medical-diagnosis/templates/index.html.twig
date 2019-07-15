@@ -1,10 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Diagnostic Médical en ligne{% endblock %}
 
 {% block body %}
-    {{ include('starting_button.html.twig') }}
-    {{ include('_footer_rgpd.html.twig') }}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+{#    {{ include('starting_button.html.twig') }}#}
+        <section class="form d-flex justify-content-center align-items-center w-100 position-relative">
+            {{ include('components/_previous_next_button.html.twig') }}
+            {{ form_start(form, {'attr': {'novalidate':'novalidate', 'class':'col-10 user-form m-auto'}}) }}
+{#            {{ include('pages/firstname_lastname_fields.html.twig') }}#}
+{#            {{ include('pages/age_range.html.twig') }}#}
+{#            {{ include('pages/gender.html.twig') }}#}
+{#            {{ include('pages/social_status.html.twig') }}#}
+{#            {{ include('pages/number_of_children.html.twig') }}#}
+{#            {{ include('pages/habits.html.twig') }}#}
+{#            {{ include('pages/favorite_breakfast.html.twig') }}#}
+{#            {{ include('pages/favorite_drink.html.twig') }}#}
+            {{ include('pages/weight_and_height.html.twig') }}
+            <button type="submit">Submit</button>
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </section>
+        {{ include('_footer_rgpd.html.twig') }}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

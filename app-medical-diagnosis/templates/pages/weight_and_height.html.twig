@@ -1,0 +1,11 @@
+{{ include('components/_question.html.twig', { question: 'Quel est votre poids et votre taille ?' }) }}
+<div class="user-icon d-flex justify-content-center pb-3">
+    <div class="js-weight-counter">0.0 kg</div>
+    <img class="mr-5" src="{{ asset('build/images/weight.aea9aef7.png') }}" alt="weight">
+    <img class="ml-5" src="{{ asset('build/images/height.c028f311.png') }}" alt="height">
+    <div class="js-height-counter ml-4">0.0 cm</div>
+</div>
+<div class="input-weight_and_height d-flex row justify-content-center">
+    {{ form_row(form.weight, {'attr': {'class':'mr-4'}}) }}
+    {{ form_row(form.height, {'attr': {'class':'ml-4'}}) }}
+</div>

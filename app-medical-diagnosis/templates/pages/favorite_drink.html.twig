@@ -1,0 +1,9 @@
+{{ include('_question.html.twig', { question: 'Quel petit déjeuner prenez-vous souvent ?' }) }}
+<div class="user-icon d-flex justify-content-center pb-3">
+    <img src="{{ asset('build/images/caffeinated_drink.6030702a.jpg') }}" alt="">
+    <img src="{{ asset('build/images/alcoholic_drink.f267c019.png') }}" alt="">
+    <img src="{{ asset('build/images/nothing_special.80516ea5.jpg') }}" alt="">
+</div>
+<div class="input-favorite_drink">
+    {{ form_row(form.favoriteDrink, {'attr': {'class':'d-flex flex-row justify-content-center'}}) }}
+</div>
