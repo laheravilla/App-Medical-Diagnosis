@@ -1,0 +1,12 @@
+{{ include('components/_question.html.twig', { question: 'Veuillez entrer votre email pour récupérer vos résultats' }) }}
+<div class="user-icon d-flex justify-content-center pb-3">
+    <img class="m-auto" src="{{ asset('build/images/user-icon.f70decb0.png') }}" alt="">
+</div>
+<div class="input-first-lastname col-4 m-auto">
+    <div class="input-group mb-2 mr-sm-2">
+        {{ form_row(form.email, {'attr': {'class':'mail-input'}}) }}
+        <div class="input-group-prepend">
+            {{ include('components/_button_form.html.twig') }}
+        </div>
+    </div>
+</div>

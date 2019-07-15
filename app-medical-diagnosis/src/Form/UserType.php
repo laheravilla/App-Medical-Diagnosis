@@ -137,7 +137,9 @@ class UserType extends AbstractType
                     'Cancers' => 'cancer',
                 ]
             ])
-//            ->add('email')
+            ->add('email', TextType::class, [
+                'label' => false,
+            ])
         ;
     }
 
