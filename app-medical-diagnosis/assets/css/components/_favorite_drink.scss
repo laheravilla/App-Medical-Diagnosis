@@ -1,0 +1,24 @@
+form.user-form {
+  .user-icon {
+    img {
+      margin-left: 5%;
+    }
+  }
+}
+
+.input-favorite_drink {
+  fieldset #user_favoriteDrink {
+    .form-check {
+      width: 15%;
+    }
+  }
+}
+
+fieldset {
+  .form-check {
+    padding-left: 2rem;
+  }
+  #user_favoriteDrink_errors {
+    margin-left: 20%;
+  }
+}
