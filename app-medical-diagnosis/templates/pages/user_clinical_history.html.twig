@@ -1,0 +1,9 @@
+{{ include('components/_question.html.twig', { question: 'Quels sont vos antécédents ?' }) }}
+<div class="cont-family-clinical-history-cont row justify-content-center">
+    <div class="user-icon d-flex justify-content-center pb-3 col-3">
+        <img class="mr-5" src="{{ asset('build/images/female-icon.cf1b1d39.png') }}" alt="family clinical history">
+    </div>
+    <div class="input-user-clinical-history col-5">
+        {{ form_row(form.userClinicalHistory) }}
+    </div>
+</div>

@@ -101,6 +101,12 @@ class User implements UserInterface
      */
     private $familyClinicalHistory;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs requis")
+     */
+    private $userClinicalHistory;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -312,6 +318,18 @@ class User implements UserInterface
     public function setFamilyClinicalHistory(string $familyClinicalHistory): self
     {
         $this->familyClinicalHistory = $familyClinicalHistory;
+
+        return $this;
+    }
+
+    public function getUserClinicalHistory(): ?string
+    {
+        return $this->userClinicalHistory;
+    }
+
+    public function setUserClinicalHistory(string $userClinicalHistory): self
+    {
+        $this->userClinicalHistory = $userClinicalHistory;
 
         return $this;
     }
