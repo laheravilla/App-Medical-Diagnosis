@@ -137,7 +137,9 @@ class UserType extends AbstractType
                     'antecedent 8' => 'antecedent 8',
                 ]
             ])
-//            ->add('email')
+            ->add('email', TextType::class, [
+                'label' => false,
+            ])
         ;
     }
 
