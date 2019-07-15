@@ -52,7 +52,15 @@ class UserType extends AbstractType
                     'Célibataire' => 'single'
                 ],
             ])
-//            ->add('numberOfChildren')
+            ->add('numberOfChildren', ChoiceType::class, [
+                'label' => false,
+                'expanded' => true,
+                'choices' => [
+                    '1 enfant' => '1',
+                    '2 enfants' => '2',
+                    '+3 enfants' => '3'
+                ]
+            ])
 //            ->add('habits')
 //            ->add('favoriteBreakfast')
 //            ->add('favoriteDrink')

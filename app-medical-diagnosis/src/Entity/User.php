@@ -20,7 +20,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true, nullable=true)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
@@ -30,19 +30,19 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $ageRange;
@@ -58,12 +58,13 @@ class User implements UserInterface
     private $height = 0;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Champs requis")
      */
     private $numberOfChildren;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
     private $gender;
