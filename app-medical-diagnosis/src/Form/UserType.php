@@ -112,7 +112,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'choices' => [
-                    'Maladie de crohn, maldies inflammatoires du système digestif' => 'digestive system',
+                    'Maladies du système digestif' => 'digestive system',
                     'Diabète' => 'diabetes',
                     'Endométriose' => 'endometriosis',
                     'Surpoids/Obésité' => 'overweight',
@@ -127,7 +127,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'choices' => [
-                    'Maladie de crohn, maldies inflammatoires du système digestif' => 'digestive system',
+                    'Maladies du système digestif' => 'digestive system',
                     'Diabète' => 'diabetes',
                     'Endométriose' => 'endometriosis',
                     'Surpoids/Obésité' => 'overweight',
