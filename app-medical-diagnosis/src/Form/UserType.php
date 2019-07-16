@@ -65,6 +65,7 @@ class UserType extends AbstractType
             ->add('habits', ChoiceType::class, [
                 'label' => false,
                 'expanded' => true,
+                'multiple' => true,
                 'choices' => [
                     'Fumer' => 'smoking',
                     'Boire' => 'drinking',
@@ -72,6 +73,7 @@ class UserType extends AbstractType
                     'Sport' => 'sport',
                     'Médicaments' => 'medicaments',
                     'Exposition aux chimiques' => 'chimical_exposition',
+                    'Rien de spécial'=> false
                 ]
             ])
             ->add('favoriteBreakfast', ChoiceType::class, [
@@ -120,6 +122,7 @@ class UserType extends AbstractType
                     'Lupus' => 'lupus',
                     'Psoriasis/Eczéma' => 'psoriasis',
                     'Cancers' => 'cancer',
+                    'Aucune' => false
                 ]
             ])
             ->add('userClinicalHistory', ChoiceType::class, [
@@ -135,6 +138,7 @@ class UserType extends AbstractType
                     'Lupus' => 'lupus',
                     'Psoriasis/Eczéma' => 'psoriasis',
                     'Cancers' => 'cancer',
+                    'Aucune' => false
                 ]
             ])
             ->add('email', TextType::class, [
