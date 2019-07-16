@@ -79,10 +79,10 @@ class User implements UserInterface
     private $socialStatus;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="array", length=255)
      * @Assert\NotBlank(message="Chams requis")
      */
-    private $habits;
+    private $habits = [];
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -97,16 +97,16 @@ class User implements UserInterface
     private $favoriteDrink;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="array", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
-    private $familyClinicalHistory;
+    private $familyClinicalHistory = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="array", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
-    private $userClinicalHistory;
+    private $userClinicalHistory = [];
 
     public function getId(): ?int
     {
@@ -275,12 +275,16 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getHabits(): ?string
+    public function getHabits(): ?array
     {
-        return $this->habits;
+        $choices = [];
+        foreach ($this->habits as $habit) {
+            $choices[] = $habit;
+        }
+        return $choices;
     }
 
-    public function setHabits(string $habits): self
+    public function setHabits(array $habits): self
     {
         $this->habits = $habits;
 
@@ -311,24 +315,32 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getFamilyClinicalHistory(): ?string
+    public function getFamilyClinicalHistory(): ?array
     {
-        return $this->familyClinicalHistory;
+        $choices = [];
+        foreach ($this->familyClinicalHistory as $illness) {
+                $choices[] = $illness;
+        }
+        return $choices;
     }
 
-    public function setFamilyClinicalHistory(string $familyClinicalHistory): self
+    public function setFamilyClinicalHistory(array $familyClinicalHistory): self
     {
         $this->familyClinicalHistory = $familyClinicalHistory;
 
         return $this;
     }
 
-    public function getUserClinicalHistory(): ?string
+    public function getUserClinicalHistory(): ?array
     {
-        return $this->userClinicalHistory;
+        $choices = [];
+        foreach ($this->userClinicalHistory as $illness) {
+            $choices[] = $illness;
+        }
+        return $choices;
     }
 
-    public function setUserClinicalHistory(string $userClinicalHistory): self
+    public function setUserClinicalHistory(array $userClinicalHistory): self
     {
         $this->userClinicalHistory = $userClinicalHistory;
 
