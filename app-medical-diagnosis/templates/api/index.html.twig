@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ApiController!{% endblock %}
+
+{% block body %}
+
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Symptoms</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for symptom in symptoms %}
+            <tr>
+                <td>{{ symptom.id }}</td>
+                <td>{{ symptom.common_name }}</td>
+                <td></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Any symptom found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
