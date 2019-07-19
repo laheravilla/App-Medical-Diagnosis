@@ -4,8 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    app_id: '%env(resolve:APP_ID)%'
-    app_key: '%env(resolve:APP_KEY)%'
+    infermedica_api_id: '%env(resolve:APP_ID)%'
+    infermedica_api_key: '%env(resolve:APP_KEY)%'
+    rapid_api_key: '%env(resolve:RAPID_API_KEY)%'
 
 services:
     # default configuration for services in *this* file

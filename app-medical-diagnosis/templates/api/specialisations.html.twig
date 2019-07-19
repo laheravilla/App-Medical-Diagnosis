@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="w-50 table mt-5">
+        <thead>
+        <tr>
+            <th>Specialisations ID</th>
+            <th>Specialisations Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for specialisation in specialisations %}
+            <tr>
+                <td>{{ specialisation.specialisationId }}</td>
+                <td>{{ specialisation.Name }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Any specialisation found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

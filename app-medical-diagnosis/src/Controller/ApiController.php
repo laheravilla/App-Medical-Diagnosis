@@ -2,44 +2,93 @@
 
 namespace App\Controller;
 
+use App\Entity\Issue;
+use App\Entity\Specialisation;
+use App\Repository\IssueRepository;
+use App\Repository\SpecialisationRepository;
+use App\Repository\SymptomRepository;
+use App\Service\Client;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class ApiController extends AbstractController
 {
-    const URL_ALL_SYMPTOMS = 'https://api.infermedica.com/v2/symptoms';
-    const URL_ALL_CONDITIONS = 'https://api.infermedica.com/v2/conditions';
-    const CONTENT_TYPE = 'application/json';
-
-
+    /**
+     * @param SymptomRepository $symptomRepository
+     * @Route("/api/symptoms", name="api_symptoms")
+     * @return Response
+     */
+    public function showAllSymptoms(SymptomRepository $symptomRepository): Response
+    {
+        return $this->render('api/index.html.twig', [
+            'symptoms' => $symptomRepository->findAll(),
+        ]);
+    }
 
     /**
-     * @Route("/api/symptoms", name="api_symptoms")
+     * @param IssueRepository $issueRepository
+     * @Route("/api/issues", name="api_issues")
+     * @return Response
      */
-    public function index()
+    public function showAllIssues(IssueRepository $issueRepository): Response
     {
-        $httpClient = HttpClient::create([
-            'headers' => [
-                'App-Id' => $this->getParameter('app_id'),
-                'App-Key' => $this->getParameter('app_key'),
-                'Content-Type' => self::CONTENT_TYPE,
-            ]
+        return $this->render('api/issues.html.twig', [
+            'issues' => $issueRepository->findAll(),
         ]);
+    }
 
-        $responseSymptoms = $httpClient->request('GET', self::URL_ALL_SYMPTOMS, ['timeout' => 2.5]);
+    /**
+     * @param Client $client
+     * @param ObjectManager $manager
+     * @param SpecialisationRepository $specialisationRepository
+     * @Route("/api/specialisations", name="api_specialisations")
+     * @return Response
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     */
+    public function getAllSpecialisations(
+        Client $client,
+        ObjectManager $manager,
+        SpecialisationRepository $specialisationRepository
+    ): Response {
 
-        if (200 !== $responseSymptoms->getStatusCode()) {
-            throw new Exception('Loading...');
+        $responseSpecialisations = $client->getClient()->request(
+            'GET',
+            Specialisation::URL_ALL_SPECIALISATIONS,
+            [
+                'timeout' => 3
+            ]
+        );
+
+        if (200 !== $responseSpecialisations->getStatusCode()) {
+            throw new Exception('An error has occurred...');
         } else {
-            $contentSymptoms = $responseSymptoms->getContent();
+            $contentSpecialisations = $responseSpecialisations->getContent();
         }
 
-        $contentSymptoms = $responseSymptoms->toArray();
+        $contentSpecialisations = $responseSpecialisations->toArray();
 
-        return $this->render('api/index.html.twig', [
-            'symptoms' => $contentSymptoms,
+        for ($i = 0; $i < count($contentSpecialisations); $i++) {
+            $specialisation = new Specialisation();
+            $specialisation->setName($contentSpecialisations[$i]['Name']);
+            $specialisation->setSpecialisationId($contentSpecialisations[$i]['ID']);
+            $manager->persist($specialisation);
+            $manager->flush();
+        }
+
+        return $this->render('api/specialisations.html.twig', [
+            'specialisations' => $specialisationRepository->findAll(),
         ]);
     }
 }

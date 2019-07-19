@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -108,6 +109,16 @@ class User implements UserInterface
      * @Assert\NotBlank(message="Champs requis")
      */
     private $userClinicalHistory = [];
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Symptom", inversedBy="users")
+     */
+    private $symptoms;
+
+    public function __construct()
+    {
+        $this->symptoms = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -344,6 +355,32 @@ class User implements UserInterface
     public function setUserClinicalHistory(array $userClinicalHistory): self
     {
         $this->userClinicalHistory = $userClinicalHistory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Symptom[]
+     */
+    public function getSymptoms(): Collection
+    {
+        return $this->symptoms;
+    }
+
+    public function addSymptom(Symptom $symptom): self
+    {
+        if (!$this->symptoms->contains($symptom)) {
+            $this->symptoms[] = $symptom;
+        }
+
+        return $this;
+    }
+
+    public function removeSymptom(Symptom $symptom): self
+    {
+        if ($this->symptoms->contains($symptom)) {
+            $this->symptoms->removeElement($symptom);
+        }
 
         return $this;
     }

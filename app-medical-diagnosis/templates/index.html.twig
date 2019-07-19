@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Diagnostic Médical en ligne{% endblock %}
+{% block stylesheets %}{% endblock %}
 
 {% block body %}
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
@@ -29,4 +30,5 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('main') }}
+    {{ encore_entry_script_tags('algolia') }}
 {% endblock %}
