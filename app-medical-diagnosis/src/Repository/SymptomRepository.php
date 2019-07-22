@@ -19,6 +19,19 @@ class SymptomRepository extends ServiceEntityRepository
         parent::__construct($registry, Symptom::class);
     }
 
+    /**
+     * @param $name
+     * @return Symptom[]
+     */
+    public function findAllSymptomsBySearchedName($name)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.name LIKE :name')
+            ->setParameter('name', "%" . $name . "%")
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Symptom[] Returns an array of Symptom objects
     //  */

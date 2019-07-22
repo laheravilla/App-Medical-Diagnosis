@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Diagnostic Médical en ligne{% endblock %}
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 
 {% block body %}
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
@@ -20,6 +22,7 @@
             {{ include('pages/weight_and_height.html.twig') }}
             {{ include('pages/family_clinical_history.html.twig') }}
             {{ include('pages/user_clinical_history.html.twig') }}
+            {{ include('pages/symptoms.html.twig') }}
             {{ include('pages/mail.html.twig') }}
             {{ include('pages/congratulations.html.twig') }}
             {{ form_row(form._token) }}
@@ -28,7 +31,110 @@
         {{ include('_footer_rgpd.html.twig') }}
 {% endblock %}
 {% block javascripts %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('main') }}
-    {{ encore_entry_script_tags('algolia') }}
+{#    {{ parent() }}#}
+{#    {{ encore_entry_script_tags('main') }}#}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script>
+        let urlSymptoms = window.location + 'admin/utility/symptoms';
+        //
+        // function getSymptoms(urlSymptoms)
+        // {
+            fetch(urlSymptoms)
+                .then((response) => response.json())
+                .then((data) => {
+
+                    let allSymptoms = [];
+
+                    for (let key in data) {
+                        // skip loop if the property is from prototype
+                        if (!data.hasOwnProperty(key)) {
+                            continue;
+                        }
+
+                        let object = data[key];
+                        for (let symptom in object) {
+                            // skip loop if the property is from prototype
+                            if (!object.hasOwnProperty(symptom)) {
+                                continue;
+                            }
+                            allSymptoms.push(object[symptom].name);
+                        }
+                    }
+                    console.log(allSymptoms);
+                })
+                .catch((error) => console.log(error));
+        // }
+
+        $(document).ready(function () {
+
+            let substringMatcher = function (strs) {
+                return function findMatches(q, cb)
+                {
+                    let matches, substringRegex;
+
+                    // an array that will be populated with substring matches
+                    matches = [];
+
+                    // regex used to determine if a string contains the substring `q`
+                    substrRegex = new RegExp(q, 'i');
+
+                    // iterate through the pool of strings and for any string that
+                    // contains the substring `q`, add it to the `matches` array
+                    $.each(strs, function (i, str) {
+                        if (substrRegex.test(str)) {
+                            matches.push(str);
+                        }
+                    });
+
+                    cb(matches);
+                };
+            };
+
+            // let symptoms = getSymptoms(urlSymptoms);
+            let symptoms = ["Absence de pouls", "Absence des règles", "Agitation", "Agressivité","Anxiété", "Aphtes",
+                "Assoupissement", "Atrophie musculaire dans la jambe", "Atrophie musculaire du bras",
+                "Augmentation de la salivation", "Augmentation de la sensibilité tactile", "Augmentation de l'appétit",
+                "Augmentation des pulsions", "Augmentation du volume urinaire", "Blessure",
+                "Bombé à la paroi abdominale", "Bouche sèche", "Bouffées de chaleur", "Boule dans le sein", "Bouton",
+                "Bruit dans l'oreille", "Brûlure à la langue", "Brûlure dans la gorge", "Brûlure des yeux",
+                "Brûlures dans le nez", "Brûlures d'estomac", "Changements dans les ongles", "Chute des cheveux",
+                "Cicatrice", "Clignotement des yeux", "Cloques sur la peau",
+                "Coloration jaunâtre de la partie blanche de l'oeil", "Comédon", "Courbure de la colonne vertébrale",
+                "Crampes", "Crampes dans les jambes", "Croûtes", "Décoloration des ongles", "Défécation difficile",
+                "Défécation difficile", "Défécation douloureuse", "Défécation incomplète", "Défécation incontrôlée",
+                "Défécation malodorante", "Défense abdominale", "Déformation de la cheville",
+                "Déformation de la hanche", "Déformation de l'orteil", "Déformation du doigt",
+                "Déformation du dos", "Déformation du genou", "Démangeaison dans la gueule ou gorge",
+                "Démangeaison dans le nez", "Démangeaison dans l'oreille", "Démangeaison de la peau",
+                "Démangeaison de l'anus", "Démangeaison des yeux", "Démangeaison ou brûlure dans la région génitale",
+                "Démangeaison sur la tête", "Désir insatiable de manger", "Désorientation temporelle ou locale",
+                "Desquamation de la peau", "Desquamation de la peau sur la tête", "Diarrhée ", "Difficulté à avaler",
+                "Difficulté à comprendre le discours", "Difficulté à parler",
+                "Difficulté à uriner lié à un début retardé", "Difficulté d'adaptation clair-obscur",
+                "Difficulté de concentration", "Diminution de l'appétit", "Diminution du jet urinaire",
+                "Douleur à la hanche", "Douleur à la jambe liée au stress", "Douleur au flanc",
+                "Douleur brûlante de l'estomac", "Douleur dans la poitrine", "Douleur irradiant à la jambe",
+                "Douleur irradiant au bras", "Douleur musculaire", "Douleurs à la respiration",
+                "Douleurs abdominales associées aux menstruations", "Douleurs abdominales basses",
+                "Douleurs lombaires", "Douleurs testiculaires", "Durcissement de la peau", "Écoulement nasal",
+                "Écoulement purulent par le vagin", "Écoulement purulent par l'urètre", "Engourdissement dans le bras",
+                "Engourdissement dans le jambe", "Engourdissement des mains", "Enrouement", "Épaississement de la peau",
+                "Épanchement articulaire", "Eruption cutanée", "Éruption cutanée", "Estomac dilaté", "Éternuements",
+                "Étourdissement"];
+
+            $('.typeahead').typeahead(
+                {
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                },
+                {
+                    name: 'symptoms',
+                    source: substringMatcher(symptoms)
+                }
+            );
+        });
+    </script>
+{#    {{ encore_entry_script_tags('autocomplete') }}#}
 {% endblock %}

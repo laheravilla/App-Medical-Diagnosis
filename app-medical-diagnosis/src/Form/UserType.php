@@ -2,20 +2,36 @@
 
 namespace App\Form;
 
-use App\Entity\SocialStatus;
+use App\Entity\Symptom;
 use App\Entity\User;
+use App\Repository\SymptomRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Routing\RouterInterface;
 
 class UserType extends AbstractType
 {
+    private $symptomRepository;
+
+    private $router;
+
+    public function __construct(SymptomRepository $symptomRepository, RouterInterface $router)
+    {
+        $this->symptomRepository = $symptomRepository;
+        $this->router = $router;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $symptom  = new Symptom();
+
         $builder
             ->add('firstName', TextType::class, [
                 'label' => false
@@ -140,6 +156,9 @@ class UserType extends AbstractType
                     'Cancers' => 'cancer',
                     'Aucune' => false
                 ]
+            ])
+            ->add('symptoms', SearchType::class, [
+                'label' => false
             ])
             ->add('email', TextType::class, [
                 'label' => false,
