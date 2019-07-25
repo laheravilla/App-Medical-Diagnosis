@@ -50,7 +50,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs requis")
      */
-    private $ageRange;
+    private $yearOfBirth;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -114,7 +114,6 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Symptom", inversedBy="users")
-     * @Assert\NotBlank(message="Champs requis")
      */
     private $symptoms;
 
@@ -218,14 +217,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getAgeRange(): ?string
+    public function getYearOfBirth(): ?string
     {
-        return $this->ageRange;
+        return $this->yearOfBirth;
     }
 
-    public function setAgeRange(string $ageRange): self
+    public function setYearOfBirth(string $yearOfBirth): self
     {
-        $this->ageRange = $ageRange;
+        $this->yearOfBirth = $yearOfBirth;
 
         return $this;
     }

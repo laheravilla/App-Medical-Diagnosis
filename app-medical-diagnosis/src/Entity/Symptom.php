@@ -22,13 +22,13 @@ class Symptom
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups("main")
      */
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $symptomId;
 
@@ -52,7 +52,7 @@ class Symptom
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -64,7 +64,7 @@ class Symptom
         return $this->symptomId;
     }
 
-    public function setSymptomId(int $symptomId): self
+    public function setSymptomId(?int $symptomId): self
     {
         $this->symptomId = $symptomId;
 

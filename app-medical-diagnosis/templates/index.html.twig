@@ -12,19 +12,19 @@
             {{ include('components/_previous_next_button.html.twig') }}
             {{ form_start(form, {'attr': {'novalidate':'novalidate', 'class':'col-10 user-form m-auto'}}) }}
             {{ include('pages/firstname_lastname_fields.html.twig') }}
-            {{ include('pages/age_range.html.twig') }}
-            {{ include('pages/gender.html.twig') }}
-            {{ include('pages/social_status.html.twig') }}
-            {{ include('pages/number_of_children.html.twig') }}
-            {{ include('pages/habits.html.twig') }}
-            {{ include('pages/favorite_breakfast.html.twig') }}
-            {{ include('pages/favorite_drink.html.twig') }}
-            {{ include('pages/weight_and_height.html.twig') }}
-            {{ include('pages/family_clinical_history.html.twig') }}
-            {{ include('pages/user_clinical_history.html.twig') }}
-            {{ include('pages/symptoms.html.twig') }}
-            {{ include('pages/mail.html.twig') }}
-            {{ include('pages/congratulations.html.twig') }}
+{#            {{ include('pages/age_range.html.twig') }}#}
+{#            {{ include('pages/gender.html.twig') }}#}
+{#            {{ include('pages/social_status.html.twig') }}#}
+{#            {{ include('pages/number_of_children.html.twig') }}#}
+{#            {{ include('pages/habits.html.twig') }}#}
+{#            {{ include('pages/favorite_breakfast.html.twig') }}#}
+{#            {{ include('pages/favorite_drink.html.twig') }}#}
+{#            {{ include('pages/weight_and_height.html.twig') }}#}
+{#            {{ include('pages/family_clinical_history.html.twig') }}#}
+{#            {{ include('pages/user_clinical_history.html.twig') }}#}
+{#            {{ include('pages/symptoms.html.twig') }}#}
+{#            {{ include('pages/mail.html.twig') }}#}
+{#            {{ include('pages/congratulations.html.twig') }}#}
             {{ form_row(form._token) }}
             {{ form_end(form, {'render_rest': false}) }}
         </section>
@@ -92,7 +92,8 @@
             };
 
             // let symptoms = getSymptoms(urlSymptoms);
-            let symptoms = ["Absence de pouls", "Absence des règles", "Agitation", "Agressivité","Anxiété", "Aphtes",
+            let symptoms = [
+                "Absence de pouls", "Absence des règles", "Agitation", "Agressivité","Anxiété", "Aphtes",
                 "Assoupissement", "Atrophie musculaire dans la jambe", "Atrophie musculaire du bras",
                 "Augmentation de la salivation", "Augmentation de la sensibilité tactile", "Augmentation de l'appétit",
                 "Augmentation des pulsions", "Augmentation du volume urinaire", "Blessure",
@@ -121,7 +122,46 @@
                 "Écoulement purulent par le vagin", "Écoulement purulent par l'urètre", "Engourdissement dans le bras",
                 "Engourdissement dans le jambe", "Engourdissement des mains", "Enrouement", "Épaississement de la peau",
                 "Épanchement articulaire", "Eruption cutanée", "Éruption cutanée", "Estomac dilaté", "Éternuements",
-                "Étourdissement"];
+                "Étourdissement", "Évanouissement", "Expectorations", "Faible vue pour les objets lointains",
+                "Faible vue pour les objets proches", "Faiblesse musculaire", "Faiblesse musculaire dans la jambe",
+                "Faiblesse musculaire dans le bras", "Faiblesse ou engourdissement du côté droite ou gauche du corps",
+                "Fatigue", "Fièvre", "Flatulence", "Fracture osseuse", "Fragilité des ongles", "Frissons",
+                "Gonflement dans la région génitale", "Gonflement de la langue", "Gonflement de la main",
+                "Gonflement de l'orteil", "Gonflement des articulations", "Gonflement des chevilles",
+                "Gonflement des ganglions au niveau des aisselles", "Gonflement des ganglions dans l'aine",
+                "Gonflement des ganglions dans le cou", "Gonflement des jambes", "Gonflement des joues", "Gonflement des lèvres",
+                "Gonflement des paupières", "Gonflement des testicules", "Gonflement du bras", "Gonflement du pied",
+                "Gonflement du visage", "Grain de beauté irrégulier", "Grossissement de la structure de la peau",
+                "Hallucination", "Halo", "Hoquet", "Hypersensibilité à la lumière", "Immobilisation", "Inactivité physique",
+                "Inconscience courte", "Insomnie", "Instabilité de l'articulation", "Joints rouges", "Langue rouge brillant",
+                "Larmes", "Machoire bloquée", "Maigreur", "Mains froides", "Mal à  la bouche", "Mal à avaler", "Mal à la gorge",
+                "Mal à la main", "Mal à l'anus", "Mal à l'oreille", "Mal à mâcher", "Mal au cou", "Mal au dos", "Mal au genou",
+                "Mal au pied", "Mal au visage", "Mal aux joints", "Mal aux membres", "Mal aux mollets", "Mal aux os",
+                "Mal aux yeux", "Mal dans l'estomac", "Mal de tête", "Malentendants", "Malposition des testicules",
+                "Manque d'air", "Manque de mémoire", "Miction douloureuse", "Mictions fréquentes",
+                "Mobilité reduite de la cheville", "Mobilité réduite de la colonne vertébrale", "Mobilité réduite de la hanche",
+                "Mobilité réduite de la jambe", "Mobilité réduite des doigts", "Moins de 3 défécations par semaine",
+                "Mouvements involontaires", "Nausée", "Nervosité", "Nez bouché", "Non-cicatrisation des plaies de la peau",
+                "Opression dans la poitrine", "Pâleur", "Palpitation", "Paralysie", "Paralysie faciale", "Paupière tombantes",
+                "Paupières collées", "Peau de couleur bleue", "Peau de couleur jaune", "Peau humide, ramolli", "Peau rouge",
+                "Peau sèche", "Perte auditive", "Perte de cils", "Perte de poids", "Perte des cheveux",
+                "Perte du champ visuel", "Perte d'urine après uriner", "Picotements", "Pieds froids", "Prise de poids",
+                "Problèmes avec le sens du toucher dans le visage", "Problèmes avec le sens du toucher dans les pieds",
+                "Protrusion des yeux", "Pustule", "Raideur dans le cou", "Raideur matinale", "Raideur musculaire",
+                "Rebond tendresse", "Respiration rapide et approfondi", "Rythme cardiaque irrégulier", "Saignement dans l'oeil",
+                "Saignement de vagin", "Saignement du nez", "Sang dans les selles", "Satiété précoce", "Sautes d'humeur",
+                "Scalp rouge", "Selles grasses", "Selles noires", "Sensation de brûlure au moment d'uriner",
+                "Sensation de corps étranger dans l'oeil", "Sensation de défaillance", "Sensation de pression dans l'oreille",
+                "Sensation de tension dans les jambes", "Sensation de vidange incomplète", "Sensibilité à la lumière",
+                "Sensibilité au bruit", "Sensibilité au froid", "Sifflement", "Soif excessive",
+                "Somnolence avec endormissement spontané", "Souffle au coeur", "Sueurs froides", "Sueurs nocturnes", "Surpoids",
+                "Tache bleue sur la peau", "Tique", "Toux", "Toux grasse", "Toux nocturne", "Toux sanglante", "Transpiration",
+                "Tremblement au mouvement", "Tremblement au repos", "Tristesse", "Trou de mémoire", "Trouble à trouver les mots",
+                "Trouble de la menstruation", "Trouble de l'érection", "Troubles de la vision", "Troubles de l'équilibre",
+                "Ulcère de jambe", "Urgence d'uriner", "Urine foncée", "Uriner pendant la nuit", "Veines marquées",
+                "Ventre gonflé", "Verrues génitales", "Vision double", "Vision double, aiguë", "Vision trouble", "Vomissement",
+                "Vomissements de sang", "Yeux rouges", "Yeux secs"
+            ];
 
             $('.typeahead').typeahead(
                 {

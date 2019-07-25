@@ -2,20 +2,7 @@
 <div class="user-icon d-flex justify-content-center pb-3">
     <img src="{{ asset('build/images/user-icon.f70decb0.png') }}" alt="">
 </div>
-{#<div class="input-symptom col-4 m-auto">#}
+<div class="input-symptom col-4 m-auto">
         <input type="text" class="typeahead form-control input-lg" placeholder="Enter symptom" autocomplete="off">
-{#    {{ form_row(form.symptoms) }}#}
-<div>
-{#<div>#}
-    <div id="output">
-
-    </div>
-
-{#    <ul>#}
-{#        {% for symptom in symptomsFound %}#}
-{#            <li><a class="" href="#}{#{{ path('home', { 'id': symptom.id }) }}#}{#">#}{#{{ symptom.name }}#}{#</a></li>#}
-{#            {% else %}#}
-{#            <div class="alert alert-danger">No symptôms</div>#}
-{#        {% endfor %}#}
-{#    </ul>#}
+    {{ form_row(form.symptoms) }}
 </div>

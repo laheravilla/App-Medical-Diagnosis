@@ -10,6 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -27,6 +28,7 @@ class SymptomsCheckerApi extends AbstractController
      * @throws RedirectionExceptionInterface
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
+     * @Route("/gettingSymptoms")
      */
     public function getAllSymptoms(
         Client $client,
@@ -56,6 +58,10 @@ class SymptomsCheckerApi extends AbstractController
             $manager->persist($symptom);
             $manager->flush();
         }
+
+//        return $this->render('index.html.twig', [
+//            'symptom' => $symptom
+//        ]);
     }
 
     /**
@@ -67,6 +73,7 @@ class SymptomsCheckerApi extends AbstractController
      * @throws RedirectionExceptionInterface
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
+     * @Route("/gettingIssues")
      */
     public function getAllIssues(
         Client $client,
@@ -96,6 +103,10 @@ class SymptomsCheckerApi extends AbstractController
             $manager->persist($issue);
             $manager->flush();
         }
+
+//        return $this->render('index.html.twig', [
+//            'issue' => $issue
+//        ]);
     }
 
     /**
@@ -136,5 +147,9 @@ class SymptomsCheckerApi extends AbstractController
             $manager->persist($specialisation);
             $manager->flush();
         }
+
+//        return $this->render('index.html.twig', [
+//            'specialisation' => $specialisation
+//        ]);
     }
 }
